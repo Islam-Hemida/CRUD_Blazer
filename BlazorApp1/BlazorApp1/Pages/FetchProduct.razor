@@ -1,0 +1,21 @@
+﻿@page "/fetchproduct"
+@using BlazorApp1.Data.Model
+@using System.Net.Http 
+@using Newtonsoft.Json
+
+    <h1> Product List</h1>
+
+
+    @code {
+        List<Product> Product_List;
+        protected override async Task OnInitializedAsync()
+        {
+            using (var client = new HttpClient())
+            { var content = await client.GetStringAsync("https://localhost:5001/api/Product/Index");
+               // Product_List = JsonConvert.DeserializeObject<List><Product>>(content);
+                Console.WriteLine(Product_List);
+            }
+
+
+        }
+    }
